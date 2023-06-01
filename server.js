@@ -5,7 +5,7 @@ import { connnectDB } from "./config/database.js";
 import cloudinary from "cloudinary";
 import Razorpay from "razorpay";
 import nodeCorn from "node-cron";
-import { Stats } from "./models/stats.js";
+import { Stats } from "./models/AdminStats.js";
 
 connnectDB();
 

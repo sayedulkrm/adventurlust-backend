@@ -9,7 +9,7 @@ import crypto from "crypto";
 import { Course } from "../models/Course.js";
 import getDataUri from "../utils/dataUri.js";
 import cloudinary from "cloudinary";
-import { Stats } from "../models/stats.js";
+import { Stats } from "../models/AdminStats.js";
 
 // =================================================================
 // =======================    Function Start    ====================
