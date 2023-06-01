@@ -7,7 +7,7 @@ export const sendToken = (res, user, message, statusCode = 200) => {
 
         // Don't add secure while in Localhost mode. It wont save the cookie in browser if secure is true.
 
-        // secure: true,
+        secure: true,
 
         sameSite: "none",
     };

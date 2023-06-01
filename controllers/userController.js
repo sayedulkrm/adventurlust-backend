@@ -82,7 +82,7 @@ export const logout = catchAsyncError(async (req, res, next) => {
     const options = {
         expires: new Date(Date.now()),
         httpOnly: true,
-        // secure: true,
+        secure: true,
         sameSite: "none",
     };
 
