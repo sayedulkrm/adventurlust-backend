@@ -1,5 +1,5 @@
 // Remember to add ".js" whille importing the file. Otherwise it will show error.
-connnectDB();
+
 import app from "./app.js";
 import { connnectDB } from "./config/database.js";
 
@@ -7,7 +7,7 @@ import cloudinary from "cloudinary";
 import Razorpay from "razorpay";
 import nodeCorn from "node-cron";
 import { Stats } from "./models/AdminStats.js";
-
+connnectDB();
 
 
 cloudinary.v2.config({
