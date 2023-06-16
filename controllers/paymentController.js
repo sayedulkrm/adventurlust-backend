@@ -85,14 +85,14 @@ export const getRazorpayKey = catchAsyncError(async (req, res, next) => {
 export const cancleSubscription = catchAsyncError(async (req, res, next) => {
     const user = await User.findById(req.user._id);
 
-    const subscriptionID = user.subscription.id;
+    const subscriptionId = user.subscription.id;
 
     let refund = false;
 
-    await instance.subscriptions.cancel(subscriptionID);
+    await instance.subscriptions.cancel(subscriptionId);
 
     const payment = await Payment.findOne({
-        razorpay_subscription_id: subscriptionID,
+        razorpay_subscription_id: subscriptionId,
     });
 
     const gap = Date.now() - payment.createdAt;
@@ -100,12 +100,11 @@ export const cancleSubscription = catchAsyncError(async (req, res, next) => {
     const refundTime = process.env.REFUND_TIME * 24 * 60 * 60 * 1000;
 
     if (refundTime > gap) {
-        refund = true;
-
         await instance.payments.refund(payment.razorpay_payment_id);
+        refund = true;
     }
 
-    await payment.deleteOne();
+    await payment.deleteOne({});
 
     user.subscription.id = undefined;
     user.subscription.status = undefined;
