@@ -36,6 +36,8 @@ router
 
 // Delete Lectur
 
-router.route("/lecture").post(isAuthenticated, authorizedAdmin, deleteLecture);
+router
+    .route("/lecture")
+    .delete(isAuthenticated, authorizedAdmin, deleteLecture);
 
 export default router;
